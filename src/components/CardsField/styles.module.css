@@ -1,0 +1,7 @@
+.cardField {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    background:linear-gradient(135deg, #a7c7dc 0%,#11171c 100%), #a7c7dc;
+}
