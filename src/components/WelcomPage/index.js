@@ -1,2 +1,1 @@
-export { default } from './WelcomPage'
-;
+export { default } from './WelcomPage';

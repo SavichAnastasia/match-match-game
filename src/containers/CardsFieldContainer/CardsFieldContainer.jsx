@@ -2,65 +2,79 @@ import React, { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import CardsField from '../../components/CardsField';
+import Congratulations from '../../components/Congratulations';
 import {
-  OPEN_CARD, HIDE_CARD, CLOSE_CARD, SET_OPENED_CARD, DELETE_OPENED_CARD, BLOCK_CLICK,
-} from './actions';
+  openCard, hideCard, closeCard, setOpenedCard, deleteOpenedCard, blockClick, resetCardsField,
+} from './cardsActions';
+import {
+  clearTime, clearTimer, setTime, setTimer,
+} from './timerActions';
+
+import Timer from '../../components/Timer';
+import BackButton from '../../components/BackButton';
 
 export default function CardsFieldContainer() {
-  const cards = useSelector((state) => state.cards);
+  const cards = useSelector((state) => state.cardsReducer.cards);
   const dispatch = useDispatch();
-  const openedCard = useSelector((state) => state.openedCard);
-  const isBlockedClick = useSelector((state) => state.isBlockedClick);
+  const openedCard = useSelector((state) => state.cardsReducer.openedCard);
+  const isBlockedClick = useSelector((state) => state.cardsReducer.isBlockedClick);
+  const isWin = useSelector((state) => state.cardsReducer.isWin);
+
+  const time = useSelector((state) => state.timerReducer.time);
+  const timer = useSelector((state) => state.timerReducer.timer);
+
+  const startTimer = () => {
+    dispatch(clearTime());
+    const id = setInterval(() => {
+      dispatch(setTime());
+    }, 1000);
+    dispatch(setTimer(id));
+  };
+
+  const stopTimer = () => {
+    clearInterval(timer);
+    dispatch(clearTimer());
+  };
+
+  const goBack = () => {
+    dispatch(resetCardsField());
+    stopTimer();
+  }
 
   const onClick = useCallback((index, src) => {
     if (isBlockedClick) return;
     if (index === openedCard.index) return;
 
-    dispatch({
-      type: OPEN_CARD,
-      data: index,
-    });
+    dispatch(openCard(index));
 
     if (openedCard.src) {
-      dispatch({
-        type: BLOCK_CLICK,
-      });
+      dispatch(blockClick());
 
       if (src === openedCard.src) {
         setTimeout(() => {
-          dispatch({
-            type: HIDE_CARD,
-            data: src,
-          });
-          dispatch({
-            type: DELETE_OPENED_CARD,
-          });
+          dispatch(hideCard(src));
+          dispatch(deleteOpenedCard());
         }, 1500);
       } else {
         setTimeout(() => {
-          dispatch({
-            type: CLOSE_CARD,
-            data: src,
-          });
-          dispatch({
-            type: DELETE_OPENED_CARD,
-          });
+          dispatch(closeCard(src));
+          dispatch(deleteOpenedCard());
         }, 1500);
       }
     } else {
-      dispatch({
-        type: SET_OPENED_CARD,
-        data: {
-          src,
-          index,
-        },
-      });
+      dispatch(setOpenedCard(src, index));
     }
   }, [dispatch, isBlockedClick, openedCard]);
 
   return (
     <>
-      <CardsField onClick={onClick} cards={cards} />
+      {isWin ? <Congratulations stopTimer={stopTimer} time={time} /> : (
+        <>
+          <CardsField onClick={onClick} cards={cards} />
+          <Timer time={time} startTimer={startTimer} stopTimer={stopTimer} />
+          <BackButton onClick={goBack} />
+        </>
+      )}
     </>
   );
 }

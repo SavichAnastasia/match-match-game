@@ -3,5 +3,11 @@
     text-align: center;
     justify-content: center;
     flex-wrap: wrap;
-    background:linear-gradient(135deg, #a7c7dc 0%,#11171c 100%), #a7c7dc;
+    width: 80%;
+    height: 70%;
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }

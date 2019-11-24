@@ -1,0 +1,21 @@
+.button {
+    background: #343462;
+    position: absolute;
+    bottom: 3%;
+    left: 3%;
+    padding: 5px;
+    border: 2px double white;
+    color: white;
+    box-shadow: 0px 0px 0 3px #343462;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    outline: none;
+}
+
+.button:hover {
+    cursor: pointer;
+    background: #8B0000;
+    box-shadow: 0px 0px 0 3px #8B0000;
+    opacity: .8;
+}

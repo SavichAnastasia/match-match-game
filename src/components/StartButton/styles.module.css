@@ -1,0 +1,23 @@
+.button {
+    background: #141414;
+    position: absolute;
+    top: 7%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    padding: 10px;
+    border: 2px double white;
+    color: white;
+    box-shadow: 0px 0px 0 3px #141414;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    outline: none;
+}
+
+.button:hover {
+    cursor: pointer;
+    background: #8B0000;
+    box-shadow: 0px 0px 0 3px #8B0000;
+    opacity: .8;
+}
