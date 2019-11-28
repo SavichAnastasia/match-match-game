@@ -1,0 +1,63 @@
+.blockField {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: rgba(240, 240, 240, .3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.blockField.hidden {
+    display: none;
+}
+
+.red {
+    border: 1px solid red; 
+}
+
+.playerForm {
+    padding: 20px;
+    background: cornsilk;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+label {
+    display: block;
+}
+
+.formItem {
+    padding: 10px;
+    font-size: 16px;
+    color: rgb(2, 103, 110);
+}
+
+.formButton {
+    font-size: 14px;
+    color: white;
+    background: rgb(5, 135, 145);
+    border: 1px solid rgb(111, 191, 197);
+    cursor: pointer;
+    padding: 2px 7px;
+    align-self: center;
+    margin-top: 10px;
+}
+
+.formButton:hover {
+    opacity: .7;
+}
+
+.error {
+    color: red;
+    font-size: 14px;
+    visibility: hidden;
+    margin: 0 auto;
+}
+
+.error.active {
+   visibility: visible;
+}
