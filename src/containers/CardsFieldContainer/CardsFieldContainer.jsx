@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import CardsField from '../../components/CardsField';
@@ -7,7 +7,7 @@ import {
   openCard, hideCard, closeCard, setOpenedCard, deleteOpenedCard, blockClick, resetCardsField,
 } from './cardsActions';
 import {
-  clearTime, clearTimer, setTime, setTimer,
+  clearTime, clearTimer, setTime, /* setTimer, */
 } from './timerActions';
 
 import Timer from '../../components/Timer';
@@ -21,24 +21,26 @@ export default function CardsFieldContainer() {
   const isWin = useSelector((state) => state.cardsReducer.isWin);
 
   const time = useSelector((state) => state.timerReducer.time);
-  const timer = useSelector((state) => state.timerReducer.timer);
+  // const timer = useSelector((state) => state.timerReducer.timer);
+
+  const timerId = useRef(null);
 
   const startTimer = () => {
     dispatch(clearTime());
-    const id = setInterval(() => {
+    timerId.current = setInterval(() => {
       dispatch(setTime());
     }, 1000);
-    dispatch(setTimer(id));
+    // dispatch(setTimer(id));
   };
 
   const stopTimer = () => {
-    clearInterval(timer);
+    clearInterval(timerId.current);
     dispatch(clearTimer());
   };
 
   const goBack = () => {
     dispatch(resetCardsField());
-    stopTimer();
+    // stopTimer();
   };
 
   const onClick = useCallback((index, src) => {
