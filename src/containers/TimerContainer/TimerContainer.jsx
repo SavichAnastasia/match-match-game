@@ -8,9 +8,7 @@ import {
 
 export default function TimerContainer() {
   const dispatch = useDispatch();
-
   const time = useSelector((state) => state.timerReducer.time);
-
   const timerId = useRef(null);
 
   const startTimer = () => {

@@ -17,3 +17,14 @@ h4 {
     padding: 10px;
     margin: 0;
 }
+
+.playerName {
+font-weight: 600;
+color: grey;
+margin: 0 auto;
+}
+
+.resultContainer {
+    display: flex;
+    justify-content: space-around;
+}

@@ -6,7 +6,7 @@ const initialState = {
   gameDifficulty: 12,
   visibleItem: null,
   cardsShirt: 'img/minions/cardShirt.jpg',
-  results: [],
+  results: JSON.parse(localStorage.getItem('memoryGameResults')) || [],
 };
 
 export default function manuReducer(state = initialState, action) {
@@ -26,12 +26,12 @@ export default function manuReducer(state = initialState, action) {
     }
 
     case SET_RESULT: {
+      const newResults = [...state.results, action.data].sort((a, b) => a.result - b.result).slice(0, 10);
+      localStorage.setItem('memoryGameResults', JSON.stringify(newResults));
+      console.log(newResults);
       return {
         ...state,
-        results: (() => {
-          const newResults = state.results.slice(0).push(action.data);
-          return newResults.sort((a, b) => a.time - b.time).slice(0, 10);
-        })(),
+        results: newResults,
       };
     }
 

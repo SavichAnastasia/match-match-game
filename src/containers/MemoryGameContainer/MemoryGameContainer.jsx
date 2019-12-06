@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { BrowserRouter, Route } from 'react-router-dom';
 
 import MainContainer from '../MainContainer';
-import Menu from '../Menu';
 import WelcomePage from '../../components/WelcomPage';
 import { setPlayer } from './playFormActions';
 import PlayerForm from '../../components/PlayerForm';
@@ -37,7 +36,6 @@ function MemoryGameContainer() {
   return (
     <>
       <PlayerForm onSubmit={savePlayer} player={player} />
-      <Menu />
       <BrowserRouter>
         <Route exact path="/" component={WelcomePage} />
         <Route path="/game" component={MainContainer} />

@@ -7,6 +7,11 @@
     font-style: italic;
 }
 
+.resultTime {
+  padding: 0 5px;
+  font-weight: 600;
+}
+
 .congratulationsContainer {
     margin: 0 auto;
 }

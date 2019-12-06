@@ -14,8 +14,10 @@ import {
 
 export default function Menu() {
   const dispatch = useDispatch();
-
+  const results = useSelector((state) => state.menuReducer.results);
   const visibleItemName = useSelector((state) => state.menuReducer.visibleItem);
+  const player = useSelector((state) => state.playFormReducer.player);
+  const gameDifficultyValue = useSelector((state) => state.menuReducer.gameDifficulty);
 
   const showPopup = (e) => {
     const eventElemName = e.currentTarget.dataset.name;
@@ -40,10 +42,10 @@ export default function Menu() {
   return (
     <div className={`${styles.menu} ${gameMenu}`}>
       <MenuItem name={top} onClick={showPopup}>
-        {visibleItemName === top ? <Top10Popup name={top} /> : '' }
+        {visibleItemName === top ? <Top10Popup name={top} results={results} player={player} /> : '' }
       </MenuItem>
       <MenuItem name={gameDifficulty} onClick={showPopup}>
-        {visibleItemName === gameDifficulty ? <GameDifficultyPopup onChange={selectGameDifficulty} name={gameDifficulty} /> : '' }
+        {visibleItemName === gameDifficulty ? <GameDifficultyPopup onChange={selectGameDifficulty} name={gameDifficulty} value={gameDifficultyValue} /> : '' }
       </MenuItem>
       <MenuItem name={cardsShirt} onClick={showPopup}>
         {visibleItemName === cardsShirt ? <CardsShirtPopup name={cardsShirt} /> : '' }

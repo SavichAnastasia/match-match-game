@@ -1,13 +1,12 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import Congratulations from '../../components/Congratulations';
+import CongratulationsContainer from '../CongratulationsContainer';
 import {
   resetCardsField, setCards,
 } from '../CardsFieldContainer/cardsActions';
 import shuffle from '../CardsFieldContainer/shuffleFunc';
 import cardsList from '../../cards.json';
-
 import BackButton from '../../components/BackButton';
 import CardsFieldContainer from '../CardsFieldContainer';
 import TimerContainer from '../TimerContainer/TimerContainer';
@@ -34,7 +33,7 @@ export default function MainContainer() {
 
   return (
     <>
-      {isWin ? <Congratulations /> : (
+      {isWin ? <CongratulationsContainer cardsAmount={cardsAmount} /> : (
         <>
           <CardsFieldContainer />
           <TimerContainer />

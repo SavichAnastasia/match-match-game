@@ -5,6 +5,7 @@ import {
 const initialState = {
   time: 0,
   timer: null,
+  result: null,
 };
 
 export default function timerReducer(state = initialState, action) {
@@ -19,6 +20,7 @@ export default function timerReducer(state = initialState, action) {
     case CLEAR_TIME: {
       return {
         ...state,
+        result: state.time,
         time: 0,
       };
     }

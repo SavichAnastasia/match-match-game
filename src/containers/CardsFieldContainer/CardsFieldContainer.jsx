@@ -12,7 +12,6 @@ export default function CardsFieldContainer() {
   const isBlockedClick = useSelector((state) => state.cardsReducer.isBlockedClick);
   const cards = useSelector((state) => state.cardsReducer.cards);
 
-
   const onClick = useCallback((index, src) => {
     if (isBlockedClick) return;
 
