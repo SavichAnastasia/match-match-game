@@ -25,19 +25,18 @@ export default function PlayerForm({ onSubmit, player }) {
   return (
     <div className={`${styles.blockField} ${player ? styles.hidden : ''}`}>
       <form className={styles.playerForm} onSubmit={onSubmit}>
-        {/* <div className={`${styles.error} ${player ? '' : styles.active}`}>Fill the form</div> */}
-        <div className={styles.formItem}>
-          <label htmlFor="fistName">First Name</label>
-          <input type="text" id="firstName" />
-        </div>
-        <div className={styles.formItem}>
-          <label htmlFor="lastName">Last Name</label>
+        <label className={styles.formItem}>
+          <div>First Name</div>
+          <input type="text" />
+        </label>
+        <label className={styles.formItem}>
+          <div>Last Name</div>
           <input type="text" id="lastName" />
-        </div>
-        <div className={styles.formItem}>
-          <label htmlFor="email">Email</label>
+        </label>
+        <label className={styles.formItem}>
+          <div>Email</div>
           <input type="email" id="email" />
-        </div>
+        </label>
         <input type="submit" value="ok" className={styles.formButton} />
       </form>
     </div>

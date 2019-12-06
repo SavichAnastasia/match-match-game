@@ -1,19 +1,18 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
-import styles from './styles.module.css';
-import timeConverter from '../Timer/timeConverter'
+import './styles.css';
 
-export default function Congratulations({ stopTimer, time }) {
-  useEffect(
-    () => {
-      stopTimer();
-    }, [],
-  );
-
+export default function Congratulations() {
   return (
-    <div className={styles.container}>
-      <div className={styles.congratulations} >Congratulations!</div>
-      <div className={styles.result} >{`Your time is ${timeConverter(time)}`} </div>
+    <div className="congratulationsContainer">
+      <div className="pyro">
+        <div className="before" />
+        <div className="after" />
+      </div>
+      <div className="congratulations">Congratulations!</div>
+      <div className="gameResult">
+        Your time is ...
+      </div>
     </div>
   );
 }

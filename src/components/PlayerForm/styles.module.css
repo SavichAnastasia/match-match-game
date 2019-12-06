@@ -26,11 +26,8 @@
     flex-direction: column;
 }
 
-label {
-    display: block;
-}
-
 .formItem {
+    display: block;
     padding: 10px;
     font-size: 16px;
     color: rgb(2, 103, 110);

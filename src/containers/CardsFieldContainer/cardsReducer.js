@@ -1,41 +1,25 @@
 import {
   OPEN_CARD, HIDE_CARD, CLOSE_CARD, SET_OPENED_CARD, DELETE_OPENED_CARD, BLOCK_CLICK,
-  RESET_CARDSFIELD,
+  RESET_CARDSFIELD, SET_CARDS,
 } from './cardsActions';
-import cardsList from '../../cards.json';
-
-function shuffle(array) {
-  let currentIndex = array.length;
-  let temporaryValue;
-  let randomIndex;
-
-  while (currentIndex !== 0) {
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex -= 1;
-
-    temporaryValue = array[currentIndex];
-    array[currentIndex] = array[randomIndex];
-    array[randomIndex] = temporaryValue;
-  }
-
-  return array;
-}
 
 const initialState = {
   isBlockedClick: false,
-  openedCard: {},
-  cards: shuffle([...cardsList, ...cardsList].map((card, index) => ({
-    src: card.src,
-    opened: false,
-    hidden: false,
-    index,
-  }))),
+  openedCard: null,
+  cards: null,
   hiddenCards: 0,
   isWin: false,
 };
 
 export default function cardsReducer(state = initialState, action) {
   switch (action.type) {
+    case SET_CARDS: {
+      return {
+        ...state,
+        cards: action.data,
+      };
+    }
+
     case BLOCK_CLICK: {
       return {
         ...state,
@@ -47,6 +31,7 @@ export default function cardsReducer(state = initialState, action) {
       return {
         ...state,
         cards: initialState.cards,
+        isWin: false,
       };
     }
 
@@ -108,7 +93,7 @@ export default function cardsReducer(state = initialState, action) {
     case DELETE_OPENED_CARD: {
       return {
         ...state,
-        openedCard: {},
+        openedCard: null,
       };
     }
 

@@ -6,7 +6,6 @@ import styles from './styles.module.css';
 function Card({
   cardShirt, picture, opened, hidden, onClick, index,
 }) {
-  console.log(2);
   return (
     <div
       className={`${styles.flipCard} ${opened ? `${styles.opened}` : ''} ${hidden ? `${styles.hidden}` : ''}`}

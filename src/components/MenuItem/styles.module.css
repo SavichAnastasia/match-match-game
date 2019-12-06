@@ -1,3 +1,11 @@
+.container {
+    position: relative;
+}
+
+.containerMain {
+    position: relative;
+    display: inline-block;
+}
 
 .menuItemContainer {
     padding: 0;
@@ -50,3 +58,28 @@
         border-right: 28px solid transparent;
     }
   }
+
+.popupContainer {
+    background: rgba(255, 255, 255, .8);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    color:  #343462;
+    font-weight: 600;
+    padding: 5px;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: max-content;
+    visibility: hidden;
+}
+
+.popupContainer .visible {
+    visibility: visible;
+    background: red;
+}
+
+h4 {
+    padding: 10px;
+    margin: 0;
+}

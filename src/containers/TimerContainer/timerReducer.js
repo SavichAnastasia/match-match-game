@@ -1,5 +1,5 @@
 import {
-  SET_TIMER, SET_TIME, CLEAR_TIME, CLEAR_TIMER,
+  SET_TIME, CLEAR_TIME,
 } from './timerActions';
 
 const initialState = {
@@ -9,20 +9,6 @@ const initialState = {
 
 export default function timerReducer(state = initialState, action) {
   switch (action.type) {
-    case SET_TIMER: {
-      return {
-        ...state,
-        timer: action.data,
-      };
-    }
-
-    case CLEAR_TIMER: {
-      return {
-        ...state,
-        timer: null,
-      };
-    }
-
     case SET_TIME: {
       return {
         ...state,

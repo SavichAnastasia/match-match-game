@@ -1,0 +1,19 @@
+.popupContainer {
+    background: rgba(255, 255, 255, .8);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    color:  #343462;
+    font-weight: 600;
+    padding: 5px;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: max-content;
+    z-index: 1;
+}
+
+h4 {
+    padding: 10px;
+    margin: 0;
+}

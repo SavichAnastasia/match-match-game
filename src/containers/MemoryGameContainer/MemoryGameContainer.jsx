@@ -2,8 +2,8 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { BrowserRouter, Route } from 'react-router-dom';
 
-import CardsFieldContainer from '../CardsFieldContainer';
-import Menu from '../../components/Menu';
+import MainContainer from '../MainContainer';
+import Menu from '../Menu';
 import WelcomePage from '../../components/WelcomPage';
 import { setPlayer } from './playFormActions';
 import PlayerForm from '../../components/PlayerForm';
@@ -11,7 +11,6 @@ import PlayerForm from '../../components/PlayerForm';
 function MemoryGameContainer() {
   const player = useSelector((state) => state.playFormReducer.player);
   const dispatch = useDispatch();
-  const playFormIsFilled = useSelector((state) => state.playFormReducer.playFormIsFilled);
 
   const savePlayer = (e) => {
     e.preventDefault();
@@ -41,7 +40,7 @@ function MemoryGameContainer() {
       <Menu />
       <BrowserRouter>
         <Route exact path="/" component={WelcomePage} />
-        <Route path="/game" component={CardsFieldContainer} />
+        <Route path="/game" component={MainContainer} />
       </BrowserRouter>
     </>
   );
