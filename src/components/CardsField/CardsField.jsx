@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 import Card from '../Card';
 import styles from './styles.module.css';
 
-function CardField({ cards, onClick }) {
+function CardField({ cards, onClick, cardsShirt }) {
   return (
     <div className={styles.cardField}>
       {
-        cards.map((card) => <Card key={card.index} cardShirt="img/minions/cardShirt.jpg" index={card.index} onClick={onClick} picture={card.src} opened={card.opened} hidden={card.hidden} />)
+        cards.map((card) => <Card key={card.index} cardsShirt={cardsShirt} index={card.index} onClick={onClick} picture={card.src} opened={card.opened} hidden={card.hidden} />)
       }
     </div>
   );

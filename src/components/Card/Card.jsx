@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import styles from './styles.module.css';
 
 function Card({
-  cardShirt, picture, opened, hidden, onClick, index,
+  cardsShirt, picture, opened, hidden, onClick, index,
 }) {
   return (
     <div
@@ -13,18 +13,18 @@ function Card({
     >
       <div
         className={styles.flipCardFront}
-        style={{ backgroundImage: `url(${cardShirt}` }}
+        style={{ backgroundImage: `url(${cardsShirt})` }}
       />
       <div
         className={styles.flipCardBack}
-        style={{ backgroundImage: `url(${picture}` }}
+        style={{ backgroundImage: `url(${picture})` }}
       />
     </div>
   );
 }
 
 Card.propTypes = {
-  cardShirt: PropTypes.string.isRequired,
+  cardsShirt: PropTypes.string.isRequired,
   picture: PropTypes.string.isRequired,
   opened: PropTypes.bool.isRequired,
   hidden: PropTypes.bool.isRequired,

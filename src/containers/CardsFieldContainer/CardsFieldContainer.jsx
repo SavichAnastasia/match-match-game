@@ -6,7 +6,7 @@ import {
   openCard, hideCard, closeCard, setOpenedCard, deleteOpenedCard, blockClick,
 } from './cardsActions';
 
-export default function CardsFieldContainer() {
+export default function CardsFieldContainer({ cardsShirt }) {
   const dispatch = useDispatch();
   const openedCard = useSelector((state) => state.cardsReducer.openedCard);
   const isBlockedClick = useSelector((state) => state.cardsReducer.isBlockedClick);
@@ -38,6 +38,6 @@ export default function CardsFieldContainer() {
   }, [dispatch, isBlockedClick, openedCard]);
 
   return (
-    <CardsField onClick={onClick} cards={cards} />
+    <CardsField onClick={onClick} cards={cards} cardsShirt={cardsShirt} />
   );
 }
