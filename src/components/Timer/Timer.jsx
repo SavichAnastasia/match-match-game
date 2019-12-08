@@ -1,15 +1,16 @@
 import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 import styles from './styles.module.css';
 import timeConverter from './timeConverter';
 
-export default function Timer({ time, startTimer, stopTimer }) {
+function Timer({ time, startTimer, stopTimer }) {
   useEffect(
     () => {
       startTimer();
 
       return stopTimer;
-    }, [],
+    }, [startTimer, stopTimer],
   );
 
   const minutes = Math.floor(time / 60);
@@ -27,3 +28,11 @@ export default function Timer({ time, startTimer, stopTimer }) {
     </div>
   );
 }
+
+Timer.propTypes = {
+  time: PropTypes.number.isRequired,
+  startTimer: PropTypes.func.isRequired,
+  stopTimer: PropTypes.func.isRequired,
+};
+
+export default React.memo(Timer);

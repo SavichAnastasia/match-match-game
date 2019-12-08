@@ -2,7 +2,7 @@ import React from 'react';
 
 import './styles.css';
 
-export default function Congratulations({ result }) {
+export default function Congratulations() {
   return (
     <div className="congratulationsContainer">
       <div className="pyro">
@@ -10,10 +10,6 @@ export default function Congratulations({ result }) {
         <div className="after" />
       </div>
       <div className="congratulations">Congratulations!</div>
-      <div className="gameResult">
-        Your time is
-        <span className="resultTime">{ result }</span>
-      </div>
     </div>
   );
 }

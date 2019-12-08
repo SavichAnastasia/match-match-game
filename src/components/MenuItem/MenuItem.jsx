@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import styles from './styles.module.css';
 
-export default function MenuItem({
+function MenuItem({
   name, children, onClick,
 }) {
   return (
@@ -18,3 +19,11 @@ export default function MenuItem({
     </div>
   );
 }
+
+MenuItem.propTypes = {
+  name: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
+  children: PropTypes.any.isRequired,
+};
+
+export default React.memo(MenuItem);

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { setCardsShirt, setGameDifficulty, setVisibleItem } from './menuActions';
@@ -13,28 +13,28 @@ import {
 
 export default function Menu() {
   const dispatch = useDispatch();
-  const results = useSelector((state) => state.menuReducer.results);
+  const results = useSelector((state) => state.timerReducer.results);
   const visibleItemName = useSelector((state) => state.menuReducer.visibleItem);
   const player = useSelector((state) => state.playFormReducer.player);
   const gameDifficultyValue = useSelector((state) => state.menuReducer.gameDifficulty);
   const cardsShirtValue = useSelector((state) => state.menuReducer.cardsShirt);
 
-  const showPopup = (e) => {
+  const showPopup = useCallback((e) => {
     const eventElemName = e.currentTarget.dataset.name;
     if (eventElemName === visibleItemName) {
       dispatch(setVisibleItem(null));
     } else {
       dispatch(setVisibleItem(e.currentTarget.dataset.name));
     }
-  };
+  }, [dispatch, visibleItemName]);
 
-  const selectGameDifficulty = (e) => {
+  const selectGameDifficulty = useCallback((e) => {
     dispatch(setGameDifficulty(e.target.value));
-  };
+  }, [dispatch]);
 
-  const selectCardsShirt = (e) => {
+  const selectCardsShirt = useCallback((e) => {
     dispatch(setCardsShirt(e.target.value));
-  };
+  }, [dispatch]);
 
   document.addEventListener('click', (e) => {
     if (!e.target.closest(`.${gameMenu}`)) {

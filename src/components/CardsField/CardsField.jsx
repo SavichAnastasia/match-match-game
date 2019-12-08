@@ -8,8 +8,19 @@ function CardField({ cards, onClick, cardsShirt }) {
   return (
     <div className={styles.cardField}>
       {
-        cards.map((card) => <Card key={card.index} cardsShirt={cardsShirt} index={card.index} onClick={onClick} picture={card.src} opened={card.opened} hidden={card.hidden} />)
-      }
+        cards.map((card) => (
+          <Card
+            key={card.index}
+            cardsAmount={cards.length}
+            cardsShirt={cardsShirt}
+            index={card.index}
+            onClick={onClick}
+            picture={card.src}
+            opened={card.opened}
+            hidden={card.hidden}
+          />
+        ))
+        }
     </div>
   );
 }
@@ -17,6 +28,7 @@ function CardField({ cards, onClick, cardsShirt }) {
 CardField.propTypes = {
   cards: PropTypes.array.isRequired,
   onClick: PropTypes.func.isRequired,
+  cardsShirt: PropTypes.string.isRequired,
 };
 
 export default React.memo(CardField);

@@ -2,8 +2,8 @@
   position: relative;
   perspective: 1000px; 
   margin: 0.4%;
-  width: 11%;
-  padding-bottom: calc(11% * 1.33);
+  width: 14%;
+  padding-bottom: calc(14% * 1.33);
   text-align: center;
   transition: transform 0.8s;
   transform-style: preserve-3d;
@@ -11,15 +11,19 @@
   cursor: pointer;
 }
 
-/* @media (max-width: 1024px) {
-  .flipCard {
-    width: 14%;
-    padding-bottom: calc(14% * 1.33);
-  }
-} */
+.flipCard.small {
+  width: 11%;
+  padding-bottom: calc(11% * 1.33);
+}
+
 
 @media (max-width: 640px) {
   .flipCard {
+    width: 20%;
+    padding-bottom: calc(20% * 1.33);
+  }
+
+  .flipCard.small {
     width: 20%;
     padding-bottom: calc(20% * 1.33);
   }

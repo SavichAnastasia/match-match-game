@@ -1,9 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-import timeConverter from '../Timer/timeConverter'
+import timeConverter from '../Timer/timeConverter';
 import styles from './styles.module.css';
 
-export default function Top10Popup({ name, results, player }) {
+function Top10Popup({ name, results, player }) {
   return (
     <div className={styles.popupContainer}>
       <h4>{name}</h4>
@@ -15,7 +16,7 @@ export default function Top10Popup({ name, results, player }) {
         <div>Result </div>
       </div>
       {results.map((item, index) => (
-        <div key={item.result + index} className={styles.resultContainer}>
+        <div key={index + item.result} className={styles.resultContainer}>
           <div>{item.cardsAmount * 2}</div>
           <div>{timeConverter(item.result)}</div>
         </div>
@@ -24,3 +25,11 @@ export default function Top10Popup({ name, results, player }) {
     </div>
   );
 }
+
+Top10Popup.propTypes = {
+  name: PropTypes.string.isRequired,
+  results: PropTypes.array.isRequired,
+  player: PropTypes.object.isRequired,
+};
+
+export default React.memo(Top10Popup);

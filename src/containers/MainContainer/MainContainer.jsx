@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import CongratulationsContainer from '../CongratulationsContainer';
+import Congratulations from '../../components/Congratulations';
 import {
   resetCardsField, setCards,
 } from '../CardsFieldContainer/cardsActions';
@@ -20,9 +20,9 @@ export default function MainContainer() {
 
   const cardsImage = cardsShirt === minionCardShirt ? minions : smiles;
 
-  const goBack = () => {
+  const goBack = useCallback(() => {
     dispatch(resetCardsField());
-  };
+  }, [dispatch]);
 
   (function initCardsField(arr) {
     const requiredCards = arr.slice(0, cardsAmount);
@@ -37,12 +37,13 @@ export default function MainContainer() {
 
   return (
     <>
-      {isWin ? <CongratulationsContainer cardsAmount={cardsAmount} /> : (
-        <>
-          <CardsFieldContainer cardsShirt={cardsShirt} />
-          <TimerContainer />
-        </>
-      )}
+      {isWin ? <Congratulations />
+        : (
+          <>
+            <CardsFieldContainer cardsShirt={cardsShirt} />
+          </>
+        )}
+      <TimerContainer isWin={isWin} cardsAmount={cardsAmount} />
       <BackButton onClick={goBack} />
     </>
   );

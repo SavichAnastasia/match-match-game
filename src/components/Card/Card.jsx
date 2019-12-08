@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 import styles from './styles.module.css';
 
 function Card({
-  cardsShirt, picture, opened, hidden, onClick, index,
+  cardsShirt, picture, opened, hidden, onClick, index, cardsAmount,
 }) {
   return (
     <div
-      className={`${styles.flipCard} ${opened ? `${styles.opened}` : ''} ${hidden ? `${styles.hidden}` : ''}`}
+      className={`${styles.flipCard} ${opened ? `${styles.opened}` : ''} ${hidden ? `${styles.hidden}` : ''} ${cardsAmount === 24 ? `${styles.small}` : ''} `}
       onClick={() => onClick(index, picture)}
     >
       <div
@@ -30,6 +30,7 @@ Card.propTypes = {
   hidden: PropTypes.bool.isRequired,
   onClick: PropTypes.func.isRequired,
   index: PropTypes.number.isRequired,
+  cardsAmount: PropTypes.number.isRequired,
 };
 
 export default React.memo(Card);

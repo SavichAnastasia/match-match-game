@@ -1,27 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import styles from './styles.module.css';
 
-export default function PlayerForm({ onSubmit, player }) {
-  // const onSubmit = (e) => {
-  //   const errorElem = document.querySelector(`.${styles.error}`);
-  //   e.preventDefault();
-  //   const [firstName, lastName, email] = [...e.currentTarget.elements].map((item) => item.value);
-  //   if (firstName && lastName && email) {
-  //     errorElem.classList.remove(styles.active);
-  //     const memoryGamePlayer = {
-  //       firstName,
-  //       lastName,
-  //       email,
-  //     };
-  //     localStorage.setItem('memoryGamePlayer', JSON.stringify(memoryGamePlayer));
-  //     document.querySelector(`.${styles.blockField}`).classList.add(styles.hidden);
-  //     console.log(localStorage.getItem('memoryGamePlayer'));
-  //   } else {
-  //     errorElem.classList.add(styles.active);
-  //   }
-  // };
-
+function PlayerForm({ onSubmit, player }) {
   return (
     <div className={`${styles.blockField} ${player ? styles.hidden : ''}`}>
       <form className={styles.playerForm} onSubmit={onSubmit}>
@@ -42,3 +24,10 @@ export default function PlayerForm({ onSubmit, player }) {
     </div>
   );
 }
+
+PlayerForm.propTypes = {
+  player: PropTypes.any.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+};
+
+export default React.memo(PlayerForm);

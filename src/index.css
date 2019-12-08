@@ -28,6 +28,6 @@ body, html, #root, .App {
   background:linear-gradient(135deg, #a7c7dc 0%,#11171c 100%), #a7c7dc;
   position: relative;
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: center;
 }

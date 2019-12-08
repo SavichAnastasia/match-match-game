@@ -1,7 +1,7 @@
 import { SET_PLAYER } from './playFormActions';
 
 const initialState = {
-  player: JSON.parse(localStorage.getItem('memoryGamePlayer')),
+  player: JSON.parse(localStorage.getItem('memoryGamePlayer')) || '',
 };
 
 export default function playFormReducer(state = initialState, action) {

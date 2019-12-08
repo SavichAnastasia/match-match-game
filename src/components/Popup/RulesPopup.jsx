@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import styles from './styles.module.css';
 
-export default function RulesPopup({ name }) {
+function RulesPopup({ name }) {
   return (
     <div className={styles.popupContainer}>
       <h4>{name}</h4>
@@ -16,3 +17,9 @@ export default function RulesPopup({ name }) {
     </div>
   );
 }
+
+RulesPopup.propTypes = {
+  name: PropTypes.string.isRequired,
+};
+
+export default React.memo(RulesPopup);

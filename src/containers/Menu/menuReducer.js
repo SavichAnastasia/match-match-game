@@ -1,13 +1,12 @@
 import {
-  SET_CARDS_SHIRT, SET_VISIBLE_ITEM, SET_GAME_DIFFICULTY, SET_RESULT,
+  SET_CARDS_SHIRT, SET_VISIBLE_ITEM, SET_GAME_DIFFICULTY,
 } from './menuActions';
 import { minionCardShirt } from '../../assets/img/minions/minions';
 
 const initialState = {
-  gameDifficulty: 12,
+  gameDifficulty: '12',
   visibleItem: null,
   cardsShirt: minionCardShirt,
-  results: JSON.parse(localStorage.getItem('memoryGameResults')) || [],
 };
 
 export default function manuReducer(state = initialState, action) {
@@ -30,16 +29,6 @@ export default function manuReducer(state = initialState, action) {
       return {
         ...state,
         cardsShirt: action.data,
-      };
-    }
-
-    case SET_RESULT: {
-      const newResults = [...state.results, action.data]
-        .sort((a, b) => a.result - b.result).slice(0, 10);
-      localStorage.setItem('memoryGameResults', JSON.stringify(newResults));
-      return {
-        ...state,
-        results: newResults,
       };
     }
 

@@ -32,6 +32,7 @@ export default function cardsReducer(state = initialState, action) {
         ...state,
         cards: initialState.cards,
         isWin: false,
+        hiddenCards: 0,
       };
     }
 

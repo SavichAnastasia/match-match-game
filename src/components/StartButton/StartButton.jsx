@@ -6,7 +6,7 @@ import styles from './styles.module.css';
 export default function StartButton() {
   return (
     <Link to="game">
-      <button className={styles.button}>
+      <button type="button" className={styles.button}>
         Start
       </button>
     </Link>

@@ -14,8 +14,8 @@ export default function WelcomPage() {
       >
         <StartButton />
         <h1>
-        memory game
-      </h1>
+          memory game
+        </h1>
       </div>
     </>
   );

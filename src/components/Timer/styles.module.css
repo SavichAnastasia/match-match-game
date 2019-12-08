@@ -1,11 +1,11 @@
 .timer {
-    color: white;
+    color: #343462;
     font-weight: 700;
     font-size: 20px;
     position: absolute;
-    top: 4%;
-    left: 50%;
-    transform: translateX(-50%);
+    top: 3%;
+    left: 3%;
+    padding: 5px;;
 }
 
 .timeIsOver {
