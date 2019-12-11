@@ -1,17 +1,17 @@
 import React, { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import PropTypes from 'prop-types';
 
 import CardsField from '../../components/CardsField';
 import {
   openCard, hideCard, closeCard, setOpenedCard, deleteOpenedCard, blockClick,
 } from './cardsActions';
 
-function CardsFieldContainer({ cardsShirt }) {
+function CardsFieldContainer() {
   const dispatch = useDispatch();
   const openedCard = useSelector((state) => state.cardsReducer.openedCard);
   const isBlockedClick = useSelector((state) => state.cardsReducer.isBlockedClick);
   const cards = useSelector((state) => state.cardsReducer.cards);
+  const cardsShirt = useSelector((state) => state.menuReducer.cardsShirt);
 
   const onClick = useCallback((index, src) => {
     if (isBlockedClick) return;
@@ -42,9 +42,5 @@ function CardsFieldContainer({ cardsShirt }) {
     <CardsField onClick={onClick} cards={cards} cardsShirt={cardsShirt} />
   );
 }
-
-CardsFieldContainer.propTypes = {
-  cardsShirt: PropTypes.string.isRequired,
-};
 
 export default React.memo(CardsFieldContainer);

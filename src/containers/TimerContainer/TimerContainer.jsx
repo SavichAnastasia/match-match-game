@@ -1,4 +1,4 @@
-import React, { useRef, useCallback } from 'react';
+import React, { useRef, useCallback, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -7,9 +7,10 @@ import {
   clearTime, setTime, setResult,
 } from './timerActions';
 
-function TimerContainer({ isWin, cardsAmount }) {
+function TimerContainer({ isWin }) {
   const dispatch = useDispatch();
   const time = useSelector((state) => state.timerReducer.time);
+  const cardsAmount = useSelector((state) => state.menuReducer.gameDifficulty);
   const timerId = useRef(null);
 
   const startTimer = useCallback(() => {
@@ -23,10 +24,12 @@ function TimerContainer({ isWin, cardsAmount }) {
     dispatch(clearTime());
   }, [dispatch]);
 
-  if (isWin) {
-    dispatch(setResult(cardsAmount));
-    clearInterval(timerId.current);
-  }
+  useEffect(() => {
+    if (isWin) {
+      dispatch(setResult(cardsAmount));
+      clearInterval(timerId.current);
+    }
+  }, [isWin, cardsAmount, dispatch]);
 
   return (
     <Timer time={time} startTimer={startTimer} stopTimer={stopTimer} />
@@ -35,7 +38,6 @@ function TimerContainer({ isWin, cardsAmount }) {
 
 TimerContainer.propTypes = {
   isWin: PropTypes.bool.isRequired,
-  cardsAmount: PropTypes.string.isRequired,
 };
 
 export default React.memo(TimerContainer);

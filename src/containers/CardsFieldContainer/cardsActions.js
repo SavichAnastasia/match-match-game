@@ -7,6 +7,7 @@ export const SET_OPENED_CARD = 'SET_OPENED_CARD';
 export const DELETE_OPENED_CARD = 'DELETE_OPENED_CARD';
 export const BLOCK_CLICK = 'BLOCK_CLICK';
 export const RESET_CARDSFIELD = 'RESET_CARDSFIELD';
+export const INIT_GAME = 'INIT_GAME';
 
 export function resetCardsField() {
   return {
@@ -61,5 +62,11 @@ export function setCards(arr) {
   return {
     type: SET_CARDS,
     data: arr,
+  };
+}
+
+export function initGame() {
+  return {
+    type: INIT_GAME,
   };
 }

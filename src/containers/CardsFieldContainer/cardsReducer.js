@@ -6,7 +6,7 @@ import {
 const initialState = {
   isBlockedClick: false,
   openedCard: null,
-  cards: null,
+  cards: [],
   hiddenCards: 0,
   isWin: false,
 };
