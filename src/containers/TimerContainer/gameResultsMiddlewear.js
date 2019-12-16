@@ -5,8 +5,9 @@ import {
 const getPlayerResults = (store) => (next) => async (action) => {
   if (action.type === INIT_RESULTS) {
     try {
-      const results = JSON.parse(localStorage.getItem('memoryGameResults'));
+      const results = JSON.parse(localStorage.getItem('memoryGameResults')) || [];
       store.dispatch({ type: GET_RESULTS_SUCESS, data: results });
+      console.log(results)
     } catch (e) {
       store.dispatch({ type: GET_RESULTS_FAIL });
     }
